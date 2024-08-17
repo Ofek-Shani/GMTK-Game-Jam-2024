@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4861952575632042114, guid: 7d5601454cad2c244a273808328083a2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 510226792911567476, guid: 7d5601454cad2c244a273808328083a2, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -73,6 +77,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8175872077654749456, guid: 7d5601454cad2c244a273808328083a2, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 3391828224861464065}
+    - targetCorrespondingSourceObject: {fileID: 8175872077654749456, guid: 7d5601454cad2c244a273808328083a2, type: 3}
       insertIndex: -1
       addedObject: {fileID: -876080593264150475}
   m_SourcePrefab: {fileID: 100100000, guid: 7d5601454cad2c244a273808328083a2, type: 3}
@@ -81,6 +88,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8175872077654749456, guid: 7d5601454cad2c244a273808328083a2, type: 3}
   m_PrefabInstance: {fileID: 2043823186684998393}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3391828224861464065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7866546145298056169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5cb56c5d6c007849ad803e3d6e5abf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!96 &-876080593264150475
 TrailRenderer:
   serializedVersion: 3

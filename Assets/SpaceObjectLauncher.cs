@@ -45,6 +45,7 @@ public class SpaceObjectLauncher : MonoBehaviour
         {
             previewTimer = 0;
             mouseCooldownCountdown = mouseCooldownTimer;
+            manager.RemoveSpacePhysicsObject(previewInstance.GetComponent<SpacePhysics>());
             Destroy(previewInstance);
         }
         mouseCooldownCountdown -= Time.deltaTime;
@@ -130,6 +131,7 @@ public class SpaceObjectLauncher : MonoBehaviour
 
     void Launch()
     {
+        manager.RemoveSpacePhysicsObject(previewInstance.GetComponent<SpacePhysics>());
         Destroy(previewInstance);
         toLaunchInstance.GetComponent<SpacePhysics>().Unpause();
         toLaunchInstance.GetComponent<Rigidbody2D>().velocity = launchVector * launchSpeed;
