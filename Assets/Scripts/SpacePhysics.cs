@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Transactions;
 using UnityEngine;
 
@@ -23,17 +24,24 @@ public class SpacePhysics : MonoBehaviour
     // Other things for internal physics logic
     List<SpacePhysics> otherBodies = new();
 
+    public void SetSpacePhysics(List<GameObject> newObjects)
+    {
+        foreach (GameObject g in newObjects) otherBodies.Add(g.GetComponent<SpacePhysics>());
+    }
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = initialVelocity;
+        List<GameObject> otherPhysics = GameObject.FindGameObjectsWithTag("GravityEmitter").ToList<GameObject>();
+        SetSpacePhysics(otherPhysics);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        GameObject[] otherPhysics = GameObject.FindGameObjectsWithTag("GravityEmitter");
-        foreach (GameObject g in otherPhysics) otherBodies.Add(g.GetComponent<SpacePhysics>());
+        List<GameObject> otherPhysics = GameObject.FindGameObjectsWithTag("GravityEmitter").ToList<GameObject>();
+        SetSpacePhysics(otherPhysics);
     }
 
     // Update is called once per frame -- 50 times per second. 

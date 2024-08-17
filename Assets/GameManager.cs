@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -46,6 +47,15 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
+
+    // PHYSICS CONTROL
+    public void UpdateSpaceObjectList()
+    {
+        var spaceObjs = GameObject.FindGameObjectsWithTag("GravityEmitter").ToList<GameObject>();
+        foreach (var spaceObject in spaceObjs) { spaceObject.GetComponent<SpacePhysics>().SetSpacePhysics(spaceObjs); }
+    }
+
+    // AMMO CONTROL
 
     int GetPressedNumber()
     {

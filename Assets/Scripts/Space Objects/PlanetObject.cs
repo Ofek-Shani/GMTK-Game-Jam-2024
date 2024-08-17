@@ -10,11 +10,12 @@ public class PlanetObject : MonoBehaviour
     public ResourceCloudObject resourceCloud;
     public UInt64 population;
 
+    GameManager gm;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        gm = GameObject.FindGameObjectWithTag("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -33,6 +34,7 @@ public class PlanetObject : MonoBehaviour
             Destroy(gameObject);
             Destroy(collider.gameObject);
             Instantiate(resourceCloud, transform.position, transform.rotation);
+            gm.UpdateSpaceObjectList();
 
         }
 

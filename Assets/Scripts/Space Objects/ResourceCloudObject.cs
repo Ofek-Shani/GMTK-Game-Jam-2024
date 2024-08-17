@@ -5,11 +5,12 @@ using UnityEngine;
 public class ResourceCloudObject : MonoBehaviour
 {
     public ResourceTypeEnum.ResourceType resource;
-    
+    GameManager gm;
     // Start is called before the first frame update
     void Start()
     {
-        
+        gm = GameObject.FindGameObjectWithTag("Game Manager").GetComponent<GameManager>();
+
     }
 
     // Update is called once per frame
@@ -25,6 +26,7 @@ public class ResourceCloudObject : MonoBehaviour
             // update resource counter
             collider.gameObject.GetComponent<CometObject>().Collect(resource);
             Destroy(gameObject);
+            gm.UpdateSpaceObjectList();
         }
     }
 }
