@@ -11,18 +11,18 @@ PrefabInstance:
     - target: {fileID: 41028761671552459, guid: be4c915ab77e8104087992884ef34c8e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 213453604, guid: 7e14731c2a5ce284c9a6377d70fe4f2b, type: 3}
+      objectReference: {fileID: -1524466741, guid: 7e14731c2a5ce284c9a6377d70fe4f2b, type: 3}
     - target: {fileID: 41028761671552459, guid: be4c915ab77e8104087992884ef34c8e, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.4811321
       objectReference: {fileID: 0}
     - target: {fileID: 41028761671552459, guid: be4c915ab77e8104087992884ef34c8e, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.4811321
       objectReference: {fileID: 0}
     - target: {fileID: 41028761671552459, guid: be4c915ab77e8104087992884ef34c8e, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.4811321
       objectReference: {fileID: 0}
     - target: {fileID: 285433682317106650, guid: be4c915ab77e8104087992884ef34c8e, type: 3}
       propertyPath: canMove
@@ -82,8 +82,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8696701593025379872, guid: be4c915ab77e8104087992884ef34c8e, type: 3}
-    - {fileID: -326656772697594323, guid: be4c915ab77e8104087992884ef34c8e, type: 3}
-    - {fileID: -7050951980193032864, guid: be4c915ab77e8104087992884ef34c8e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
