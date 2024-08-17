@@ -49,10 +49,14 @@ public class GameManager : MonoBehaviour
     }
 
     // PHYSICS CONTROL
-    public void UpdateSpaceObjectList()
+    public List<SpacePhysics> spacePhysicsInScene { get; private set; } = new();
+    public void AddSpacePhysicsObject(SpacePhysics toAdd)
     {
-        var spaceObjs = GameObject.FindGameObjectsWithTag("GravityEmitter").ToList<GameObject>();
-        foreach (var spaceObject in spaceObjs) { spaceObject.GetComponent<SpacePhysics>().SetSpacePhysics(spaceObjs); }
+        spacePhysicsInScene.Add(toAdd);
+    }
+    public void RemoveSpacePhysicsObject(SpacePhysics toRemove)
+    {
+        spacePhysicsInScene.Remove(toRemove);
     }
 
     // AMMO CONTROL

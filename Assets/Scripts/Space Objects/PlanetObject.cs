@@ -10,12 +10,14 @@ public class PlanetObject : MonoBehaviour
     public ResourceCloudObject resourceCloud;
     public UInt64 population;
 
+
     GameManager gm;
 
     // Start is called before the first frame update
     void Start()
     {
-        gm = GameObject.FindGameObjectWithTag("Game Manager").GetComponent<GameManager>();
+        gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        gm.AddSpacePhysicsObject(GetComponent<SpacePhysics>());
     }
 
     // Update is called once per frame
@@ -34,8 +36,7 @@ public class PlanetObject : MonoBehaviour
             Destroy(gameObject);
             Destroy(collider.gameObject);
             Instantiate(resourceCloud, transform.position, transform.rotation);
-            gm.UpdateSpaceObjectList();
-
+            gm.RemoveSpacePhysicsObject(GetComponent<SpacePhysics>());
         }
 
         if(collider.gameObject.GetComponent<CometObject>())
@@ -43,6 +44,14 @@ public class PlanetObject : MonoBehaviour
             Destroy(collider.gameObject);
         }
 
+    }
+
+    //Debug Function
+    string PrintList(List<GameObject> toPrint)
+    {
+        string strToPrint = "";
+        foreach (GameObject g in toPrint) strToPrint += g.name + " ";
+        return strToPrint;
     }
 
 

@@ -12,7 +12,9 @@ public class SpacePhysics : MonoBehaviour
     // PER OBJECT CONFIGS
 
     bool isPaused = false;
-
+    // max distance an object can be from this object to still recieve gravity force
+    [Range(0.0f, 10.0f)]
+    public float maxGravityDistance = 5f;
     public bool emitsGravity;
     public bool canMove;
     [Range(0.0f, 10.0f)]
@@ -20,28 +22,21 @@ public class SpacePhysics : MonoBehaviour
     public Vector2 initialVelocity;
     // Internal Components
     Rigidbody2D rb;
-
-    // Other things for internal physics logic
-    List<SpacePhysics> otherBodies = new();
-
-    public void SetSpacePhysics(List<GameObject> newObjects)
-    {
-        foreach (GameObject g in newObjects) otherBodies.Add(g.GetComponent<SpacePhysics>());
-    }
+    // External components
+    GameManager gm;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = initialVelocity;
+        rb.mass = mass;
         List<GameObject> otherPhysics = GameObject.FindGameObjectsWithTag("GravityEmitter").ToList<GameObject>();
-        SetSpacePhysics(otherPhysics);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        List<GameObject> otherPhysics = GameObject.FindGameObjectsWithTag("GravityEmitter").ToList<GameObject>();
-        SetSpacePhysics(otherPhysics);
+        gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame -- 50 times per second. 
@@ -49,7 +44,7 @@ public class SpacePhysics : MonoBehaviour
     {
         if (canMove && !isPaused)
         {
-
+            //if (GetComponent<ResourceCloudObject>()) Debug.Log(" ASFD "  + otherBodies.ToString());
             rb.AddForce(GetNetForceVector(transform.position), ForceMode2D.Force);
         }
 
@@ -68,9 +63,9 @@ public class SpacePhysics : MonoBehaviour
     Vector2 GetNetForceVector(Vector2 position)
     {
         Vector2 netForce = Vector2.zero;
-        foreach(SpacePhysics sp in otherBodies)
+        foreach(SpacePhysics sp in gm.spacePhysicsInScene)
         {
-            netForce += sp.GetForce(this, position);
+            if(sp) netForce += sp.GetForce(this, position);
 
             // Debug.Log(netForce + " nf");
         }
@@ -91,6 +86,9 @@ public class SpacePhysics : MonoBehaviour
 
         // get all the values for the formula
         float r = (transform.position - (Vector3)targetPos).magnitude;
+        // if the object is too far away, do nothing.
+        if(r > maxGravityDistance) return Vector2.zero;
+
         Vector2 rHat = (transform.position - (Vector3)targetPos).normalized;
         float m1 = this.mass;
         float m2 = target.mass;

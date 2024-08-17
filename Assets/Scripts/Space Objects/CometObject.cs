@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class CometObject : MonoBehaviour
 {
+    GameManager gm;
+
+    private void Start()
+    {
+
+        gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        gm.AddSpacePhysicsObject(GetComponent<SpacePhysics>());
+    }
+
     public int[] resources { get; private set; } = new int[4];
     public void Collect(ResourceTypeEnum.ResourceType toCollect)
     {

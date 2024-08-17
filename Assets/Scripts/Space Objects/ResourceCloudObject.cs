@@ -9,7 +9,8 @@ public class ResourceCloudObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gm = GameObject.FindGameObjectWithTag("Game Manager").GetComponent<GameManager>();
+        gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        gm.AddSpacePhysicsObject(GetComponent<SpacePhysics>());
 
     }
 
@@ -26,7 +27,7 @@ public class ResourceCloudObject : MonoBehaviour
             // update resource counter
             collider.gameObject.GetComponent<CometObject>().Collect(resource);
             Destroy(gameObject);
-            gm.UpdateSpaceObjectList();
+            gm.RemoveSpacePhysicsObject(GetComponent<SpacePhysics>());
         }
     }
 }
