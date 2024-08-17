@@ -75,7 +75,7 @@ public class SpaceObjectLauncher : MonoBehaviour
     {
         toLaunchInstance.GetComponent<SpacePhysics>().Unpause();
         toLaunchInstance.GetComponent<Rigidbody2D>().velocity = launchVector * LAUNCH_SPEED;
-        toLaunchInstance.GetComponent<CircleCollider2D>().enabled = false;
+        toLaunchInstance.GetComponent<CircleCollider2D>().enabled = true;
         toLaunchInstance = null;
         aiming = false;
         lineRenderer.positionCount = 0;

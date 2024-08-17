@@ -31,6 +31,7 @@ public class PlanetObject : MonoBehaviour
         if (collider.gameObject.GetComponent<AsteroidObject>() != null)
         {
             Destroy(gameObject);
+            Destroy(collider.gameObject);
             Instantiate(resourceCloud, transform.position, transform.rotation);
 
         }
