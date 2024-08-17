@@ -316,6 +316,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: resource_cloud_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a27b7296c8ebc94e99018fee0601b2b
+      internalID: 213453604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -333,6 +354,7 @@ TextureImporter:
       planets_2: -628545865
       planets_basic: 1954825660
       planets_target: 1108392681
+      resource_cloud_1: 213453604
       star_1: -1524466741
       star_2: 1664241343
   mipmapLimitGroupName: 
