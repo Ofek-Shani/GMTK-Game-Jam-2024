@@ -24,6 +24,7 @@ public class StarObject : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
+        gm.RemoveSpacePhysicsObject(collider.GetComponent<SpacePhysics>());
         Destroy(collider.gameObject);
     }
 }

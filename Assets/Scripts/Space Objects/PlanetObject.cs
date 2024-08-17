@@ -46,6 +46,12 @@ public class PlanetObject : MonoBehaviour
             Destroy(collider.gameObject);
         }
 
+        if (collider.gameObject.GetComponent<PreviewAsteroidObject>())
+        {
+            gm.RemoveSpacePhysicsObject(collider.GetComponent<SpacePhysics>());
+            // did I say destroy collider here or not?
+        }
+
     }
 
     //Debug Function
