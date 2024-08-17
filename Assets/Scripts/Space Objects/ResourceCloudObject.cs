@@ -17,4 +17,13 @@ public class ResourceCloudObject : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.GetComponent<CometObject>() != null)
+        {
+            // update resource counter
+            Destroy(gameObject);
+        }
+    }
 }
