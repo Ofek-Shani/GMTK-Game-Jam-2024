@@ -11,6 +11,7 @@ public class SpaceObjectLauncher : MonoBehaviour
     //component references
     LineRenderer lineRenderer;
     Camera cam;
+    GameManager manager;
 
     public GameObject objectToLaunch;
     GameObject toLaunchInstance;
@@ -24,17 +25,25 @@ public class SpaceObjectLauncher : MonoBehaviour
         cam = Camera.main;
     }
 
+    private void Start()
+    {
+        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+    }
+
 
     bool aiming = false;
     private void OnMouseDown()
     {
-        aiming = true;
-        toLaunchInstance = Instantiate(objectToLaunch, transform.position, new Quaternion());
-        toLaunchInstance.GetComponent<SpacePhysics>().Pause();
-        toLaunchInstance.transform.position = transform.position;
+        if (manager.canLaunchersFire)
+        {
+            aiming = true;
+            toLaunchInstance = Instantiate(objectToLaunch, transform.position, new Quaternion());
+            toLaunchInstance.GetComponent<SpacePhysics>().Pause();
+            toLaunchInstance.transform.position = transform.position;
 
-        // temporarily disable collider
-        toLaunchInstance.GetComponent<CircleCollider2D>().enabled = false;
+            // temporarily disable collider
+            toLaunchInstance.GetComponent<CircleCollider2D>().enabled = false;
+        }
     }
 
     private void OnMouseUp()
@@ -79,5 +88,6 @@ public class SpaceObjectLauncher : MonoBehaviour
         toLaunchInstance = null;
         aiming = false;
         lineRenderer.positionCount = 0;
+        manager.OnLauncherFired();
     }
 }

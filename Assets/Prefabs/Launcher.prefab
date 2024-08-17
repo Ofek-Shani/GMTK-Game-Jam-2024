@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 666162833656688967}
   m_Layer: 0
   m_Name: Launcher
-  m_TagString: Untagged
+  m_TagString: Launcher
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToLaunch: {fileID: 3241895408231308894, guid: 6479278df18568a47a3a48a81ed1c054, type: 3}
+  LAUNCH_SPEED: 2
 --- !u!120 &6568938534455532211
 LineRenderer:
   serializedVersion: 2

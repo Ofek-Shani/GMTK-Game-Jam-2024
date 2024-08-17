@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - GravityEmitter
+  - GameManager
+  - Launcher
   layers:
   - Default
   - TransparentFX
