@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     List<SpaceObjectLauncher> launchers = new();
 
+    ParticleSystem particleSystem;
 
     enum Ammo { Comet, Asteroid };
     public int startingAsteroids, startingComets;
@@ -20,7 +21,8 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         ammoRemaining = new int[] { startingComets, startingAsteroids };
-    }
+        particleSystem = GetComponent<ParticleSystem>();
+    }   
 
     private void Start()
     {
@@ -28,6 +30,21 @@ public class GameManager : MonoBehaviour
         foreach (var launcherObject in launcherObjects) launchers.Add(launcherObject.GetComponent<SpaceObjectLauncher>());
         SwitchAmmo(Ammo.Comet);
 
+    }
+
+    private void FixedUpdate()
+    {
+        ParticleSystem.Particle[] particles = new ParticleSystem.Particle[particleSystem.particleCount];
+        particleSystem.GetParticles(particles);
+        for(int i = 0; i < particles.Length; i++) particles[i].velocity = GetNetParticleVelocity(particles[i].position);
+    }
+
+    Vector2 GetNetParticleVelocity(Vector2 particlePos)
+    {
+        Vector2 toReturn = Vector2.zero;
+        foreach (SpacePhysics sp in spacePhysicsInScene) toReturn += sp.GetParticleVelocity(particlePos);
+
+        return toReturn;
     }
 
     private void Update()
