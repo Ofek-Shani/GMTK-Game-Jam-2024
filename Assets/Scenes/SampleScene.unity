@@ -175,6 +175,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5033385849657672603, guid: d2a227922158db441bbbcfefc94845ae, type: 3}
+      propertyPath: rotationSpeed
+      value: -0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 5033385849657672603, guid: d2a227922158db441bbbcfefc94845ae, type: 3}
       propertyPath: resourcesNeeded.Array.data[0]
       value: 1
       objectReference: {fileID: 0}
@@ -378,6 +382,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8696701593025379872, guid: be4c915ab77e8104087992884ef34c8e, type: 3}
+      propertyPath: rotationSpeed
+      value: 0.01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -483,6 +491,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5264981401602082371, guid: 8bbd3970ace08bf46b122bac08d97d33, type: 3}
+      propertyPath: rotationSpeed
+      value: 0.005
+      objectReference: {fileID: 0}
     - target: {fileID: 403081391295668088, guid: 8bbd3970ace08bf46b122bac08d97d33, type: 3}
       propertyPath: mass
       value: 10
@@ -593,13 +605,37 @@ PrefabInstance:
       value: Launcher
       objectReference: {fileID: 0}
     - target: {fileID: 5351781883350872866, guid: 93ca8354ce082244a8fa927560c7d2d3, type: 3}
+      propertyPath: launchSpeed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351781883350872866, guid: 93ca8354ce082244a8fa927560c7d2d3, type: 3}
       propertyPath: LAUNCH_SPEED
-      value: 5
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351781883350872866, guid: 93ca8354ce082244a8fa927560c7d2d3, type: 3}
+      propertyPath: previewTimer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5351781883350872866, guid: 93ca8354ce082244a8fa927560c7d2d3, type: 3}
       propertyPath: objectToLaunch
       value: 
-      objectReference: {fileID: 4431555965835605978, guid: 218af98b167af7849b4da7a5f10a10eb, type: 3}
+      objectReference: {fileID: 8175872077654749456, guid: 7d5601454cad2c244a273808328083a2, type: 3}
+    - target: {fileID: 5351781883350872866, guid: 93ca8354ce082244a8fa927560c7d2d3, type: 3}
+      propertyPath: previewLifetime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351781883350872866, guid: 93ca8354ce082244a8fa927560c7d2d3, type: 3}
+      propertyPath: mouseCooldownTimer
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351781883350872866, guid: 93ca8354ce082244a8fa927560c7d2d3, type: 3}
+      propertyPath: trajectoryPreviewObject
+      value: 
+      objectReference: {fileID: 7866546145298056169, guid: b1e949bd9525c8e4ebd05b1e44193eba, type: 3}
+    - target: {fileID: 6568938534455532211, guid: 93ca8354ce082244a8fa927560c7d2d3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

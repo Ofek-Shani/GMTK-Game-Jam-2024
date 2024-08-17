@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     {
         var launcherObjects = GameObject.FindGameObjectsWithTag("Launcher");
         foreach (var launcherObject in launcherObjects) launchers.Add(launcherObject.GetComponent<SpaceObjectLauncher>());
-        SwitchAmmo(Ammo.Comet);
+        // SwitchAmmo(Ammo.Comet);
 
     }
 
