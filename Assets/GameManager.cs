@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     enum Ammo { Comet, Asteroid, Piercer, Pusher, Blaster};
     public int startingAsteroids, startingComets, startingPiercers, startingPushers, startingBlasters;
     public int[] ammoRemaining { get; private set; }
+    public int[] maxAmmo { get; private set; }
     [SerializeField] List<GameObject> ammoPrefabs;
     Ammo currentAmmoType = 0;
     public bool canLaunchersFire { private set; get; } = true;
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         ammoRemaining = new int[] { startingComets, startingAsteroids , startingPiercers, startingPushers, startingBlasters};
+        maxAmmo = new int[] { startingComets, startingAsteroids, startingPiercers, startingPushers, startingBlasters };
         particleSystem = GetComponent<ParticleSystem>();
         hotbar = GameObject.FindGameObjectWithTag("Hotbar").GetComponent<HotbarController>();
     }   
