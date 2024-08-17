@@ -100,6 +100,16 @@ public class SpacePhysics : MonoBehaviour
         return rHat * vecMag;
     }
 
+    /// <summary>
+    /// Gets a particle velocity vector caused by this object.
+    /// </summary>
+    /// <returns></returns>
+    public Vector2 GetParticleVelocity(Vector2 pos)
+    {
+        Vector2 disp = (Vector2)transform.position - pos;
+        return disp.normalized * (UNIVERSAL_GRAVITY_CONSTANT * this.mass / Mathf.Pow(disp.magnitude, 2));
+    }
+
     public List<Vector2> Simulate(Vector2 initialVelocity, float stepSize, int numSteps)
     {
         List<Vector2> toReturn = new();
