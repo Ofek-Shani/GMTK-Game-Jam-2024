@@ -73,11 +73,23 @@ public class SpaceObjectLauncher : MonoBehaviour
 
     private void OnMouseExit()
     {
-        aiming = false;
-        Destroy(toLaunchInstance);
-        toLaunchInstance = null;
-        lineRenderer.positionCount = 0;
+        if (aiming)
+        {
+            aiming = false;
+            StartCoroutine(UnplaceProjectile());
+            toLaunchInstance = null;
+            lineRenderer.positionCount = 0;
+        }
 
+    }
+    /// <summary>
+    /// Runs
+    /// </summary>
+    public IEnumerator UnplaceProjectile()
+    {
+        toLaunchInstance.GetComponent<Animator>().Play("Disappear");
+        yield return new WaitForSecondsRealtime(0.1f);
+        Destroy(toLaunchInstance);
     }
 
     void Launch()
