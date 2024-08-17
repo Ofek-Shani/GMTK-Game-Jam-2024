@@ -23,6 +23,7 @@ public class ResourceCloudObject : MonoBehaviour
         if (collider.gameObject.GetComponent<CometObject>() != null)
         {
             // update resource counter
+            collider.gameObject.GetComponent<CometObject>().Collect(resource);
             Destroy(gameObject);
         }
     }

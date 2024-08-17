@@ -23,10 +23,10 @@ public class PlanetObject : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collider) 
+    public virtual void OnTriggerEnter2D(Collider2D collider) 
     {
-        Debug.Log("hi does this actually work?");
-        Debug.Log(collider);
+        //Debug.Log("hi does this actually work?");
+        //Debug.Log(collider);
         //Console.Write(collider);
         if (collider.gameObject.GetComponent<AsteroidObject>() != null)
         {
@@ -34,6 +34,11 @@ public class PlanetObject : MonoBehaviour
             Destroy(collider.gameObject);
             Instantiate(resourceCloud, transform.position, transform.rotation);
 
+        }
+
+        if(collider.gameObject.GetComponent<CometObject>())
+        {
+            Destroy(collider.gameObject);
         }
 
     }

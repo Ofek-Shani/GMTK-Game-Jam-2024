@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class CometObject : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public int[] resources { get; private set; } = new int[4];
+    public void Collect(ResourceTypeEnum.ResourceType toCollect)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        resources[(int)toCollect]++;
     }
 }

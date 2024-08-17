@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -30,11 +31,19 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        // Number Key Input handling
         int numberInput = GetPressedNumber();
         if(numberInput != -1)
         {
             Debug.Log(numberInput + " Pressed.");
             if (ammoRemaining[numberInput] > 0) SwitchAmmo((Ammo)numberInput);
+        }
+
+        // Restart Key Input handling
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Debug.Log("Reloading Level");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
@@ -57,7 +66,7 @@ public class GameManager : MonoBehaviour
         }
         currentAmmoType = newAmmo;
         canLaunchersFire = true;
-        Debug.Log("Ammo switched to " + newAmmo + " . " + ammoRemaining[(int)newAmmo] + " remain");
+        Debug.Log("Ammo switched to " + newAmmo + "s (You have " + ammoRemaining[(int)newAmmo] + ").");
         return true;
     }
 
@@ -68,7 +77,7 @@ public class GameManager : MonoBehaviour
     {
         ammoRemaining[(int)currentAmmoType] -= 1;
         canLaunchersFire = ammoRemaining[(int)currentAmmoType] > 0;
-        Debug.Log("Projectile " + currentAmmoType + " fired. " + ammoRemaining[(int)currentAmmoType] + " remain.");
+        Debug.Log("Projectile " + currentAmmoType + " fired. " + ammoRemaining[(int)currentAmmoType] + "  rounds left.");
     }
 
 
