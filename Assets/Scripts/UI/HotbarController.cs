@@ -20,7 +20,7 @@ public class HotbarController : MonoBehaviour
         UpdateIcons();
     }
 
-    void UpdateIcons()
+    public void UpdateIcons()
     {
         for(int i = 0; i < transform.childCount; i++)
         {
