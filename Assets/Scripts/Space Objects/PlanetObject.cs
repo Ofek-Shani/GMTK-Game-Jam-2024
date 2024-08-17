@@ -25,10 +25,10 @@ public class PlanetObject : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider) 
     {
-        print("hi does this actually work?");
-        print(collider);
+        Debug.Log("hi does this actually work?");
+        Debug.Log(collider);
         //Console.Write(collider);
-        if (collider.GetComponent<AsteroidObject>() != null)
+        if (collider.gameObject.GetComponent<AsteroidObject>() != null)
         {
             Destroy(gameObject);
             Instantiate(resourceCloud, transform.position, transform.rotation);

@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: -1170975967617891939}
   - component: {fileID: 8625999467463687931}
   - component: {fileID: 2582604366551487832}
+  - component: {fileID: 5636647805256308433}
   m_Layer: 0
   m_Name: Planet
-  m_TagString: Untagged
+  m_TagString: GravityEmitter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.5924529, g: 0.5924529, b: 0.5924529, a: 1}
+  m_Sprite: {fileID: 1954825660, guid: 7e14731c2a5ce284c9a6377d70fe4f2b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -99,7 +100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb811325334feb1478cfdf2a9c16f3a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 0
   resourceCloud: {fileID: 0}
   population: 0
 --- !u!58 &8625999467463687931
@@ -164,3 +164,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &5636647805256308433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7394583811205896233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b159aec1a2d8d94b9d773cfa3b0448f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emitsGravity: 1
+  canMove: 0
+  mass: 2.5
+  initialVelocity: {x: 0, y: 0}
