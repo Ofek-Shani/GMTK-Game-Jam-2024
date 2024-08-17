@@ -73,10 +73,13 @@ public class SpaceObjectLauncher : MonoBehaviour
 
     private void OnMouseExit()
     {
-        aiming = false;
-        StartCoroutine(UnplaceProjectile());
-        toLaunchInstance = null;
-        lineRenderer.positionCount = 0;
+        if (aiming)
+        {
+            aiming = false;
+            StartCoroutine(UnplaceProjectile());
+            toLaunchInstance = null;
+            lineRenderer.positionCount = 0;
+        }
 
     }
     /// <summary>

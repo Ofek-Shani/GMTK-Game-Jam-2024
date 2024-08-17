@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     List<SpaceObjectLauncher> launchers = new();
 
+    const float SPACE_DUST_SPEED_MULTIPLIER = 0.1f;
     ParticleSystem particleSystem;
 
     enum Ammo { Comet, Asteroid };
@@ -36,7 +37,8 @@ public class GameManager : MonoBehaviour
     {
         ParticleSystem.Particle[] particles = new ParticleSystem.Particle[particleSystem.particleCount];
         particleSystem.GetParticles(particles);
-        for(int i = 0; i < particles.Length; i++) particles[i].velocity = GetNetParticleVelocity(particles[i].position);
+        for (int i = 0; i < particles.Length; i++) particles[i].velocity = GetNetParticleVelocity(particles[i].position);
+        particleSystem.SetParticles(particles, particleSystem.particleCount);
     }
 
     Vector2 GetNetParticleVelocity(Vector2 particlePos)
@@ -44,7 +46,7 @@ public class GameManager : MonoBehaviour
         Vector2 toReturn = Vector2.zero;
         foreach (SpacePhysics sp in spacePhysicsInScene) toReturn += sp.GetParticleVelocity(particlePos);
 
-        return toReturn;
+        return toReturn * SPACE_DUST_SPEED_MULTIPLIER;
     }
 
     private void Update()

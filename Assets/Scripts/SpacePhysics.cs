@@ -106,7 +106,7 @@ public class SpacePhysics : MonoBehaviour
     /// <returns></returns>
     public Vector2 GetParticleVelocity(Vector2 pos)
     {
-        Vector2 disp = pos - (Vector2)transform.position;
+        Vector2 disp = (Vector2)transform.position - pos;
         return disp.normalized * (UNIVERSAL_GRAVITY_CONSTANT * this.mass / Mathf.Pow(disp.magnitude, 2));
     }
 
