@@ -87,7 +87,7 @@ public class SpaceObjectLauncher : MonoBehaviour
             if (previewTimer <= 0)
             {
                 previewInstance = Instantiate(trajectoryPreviewObject, transform.position, Quaternion.identity);
-                previewInstance.GetComponent<Rigidbody2D>().velocity = launchVector * launchSpeed;
+                previewInstance.GetComponent<Rigidbody2D>().velocity = launchVector.normalized * launchSpeed;
                 // not calling RemoveSpacePhysicsObject here might cause some bugs, oh well lol
                 Destroy(previewInstance, previewLifetime);
                 previewTimer = previewLifetime;
@@ -135,7 +135,7 @@ public class SpaceObjectLauncher : MonoBehaviour
         manager.RemoveSpacePhysicsObject(previewInstance.GetComponent<SpacePhysics>());
         Destroy(previewInstance);
         toLaunchInstance.GetComponent<SpacePhysics>().Unpause();
-        toLaunchInstance.GetComponent<Rigidbody2D>().velocity = launchVector * launchSpeed;
+        toLaunchInstance.GetComponent<Rigidbody2D>().velocity = launchVector.normalized * launchSpeed;
         toLaunchInstance.GetComponent<CircleCollider2D>().enabled = true;
         toLaunchInstance = null;
         aiming = false;
