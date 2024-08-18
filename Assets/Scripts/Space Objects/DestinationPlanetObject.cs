@@ -40,7 +40,7 @@ public class DestinationPlanetObject : MonoBehaviour
     void Victory()
     {
         GetComponent<Rotator>().enabled = false;
-        GetComponent<Animator>().Play("Win");
+        GetComponentInChildren<Animator>().Play("Win");
         StartCoroutine(GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().Victory());
     }
 }
