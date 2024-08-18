@@ -8,7 +8,7 @@ public class SpaceObjectLauncher : MonoBehaviour
     const int SIM_NUM_STEPS = 100;
     const float SIM_STEP_SIZE = 1f;
 
-    public float mouseCooldownTimer = 1f;
+    public float mouseCooldownTimer = 0f;
     float mouseCooldownCountdown = 0f;
 
     

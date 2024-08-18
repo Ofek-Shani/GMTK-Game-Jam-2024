@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3931954476984167414, guid: d2a227922158db441bbbcfefc94845ae, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.02
+      value: 2.52
       objectReference: {fileID: 0}
     - target: {fileID: 3931954476984167414, guid: d2a227922158db441bbbcfefc94845ae, type: 3}
       propertyPath: m_LocalPosition.y
@@ -469,7 +469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 403081391295668088, guid: 8bbd3970ace08bf46b122bac08d97d33, type: 3}
       propertyPath: mass
-      value: 27
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 403081391295668088, guid: 8bbd3970ace08bf46b122bac08d97d33, type: 3}
       propertyPath: maxGravityDistance
@@ -1059,7 +1059,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5351781883350872866, guid: 93ca8354ce082244a8fa927560c7d2d3, type: 3}
       propertyPath: launchSpeed
-      value: 10
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 5351781883350872866, guid: 93ca8354ce082244a8fa927560c7d2d3, type: 3}
       propertyPath: LAUNCH_SPEED
@@ -1079,7 +1079,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5351781883350872866, guid: 93ca8354ce082244a8fa927560c7d2d3, type: 3}
       propertyPath: mouseCooldownTimer
-      value: 0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5351781883350872866, guid: 93ca8354ce082244a8fa927560c7d2d3, type: 3}
       propertyPath: trajectoryPreviewObject
