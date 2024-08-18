@@ -229,6 +229,7 @@ MonoBehaviour:
   - {fileID: 5647174463087312145, guid: 7e3a5c90d582bd741929f0fbbeb1e222, type: 3}
   - {fileID: 1343907980583864364, guid: 62f1bb748b809664da1aca619a32afdf, type: 3}
   - {fileID: 6451826867480382310, guid: 697999c9069250645a9be65b18ad5964, type: 3}
+  nextLevel: Level 3
 --- !u!4 &603260913
 Transform:
   m_ObjectHideFlags: 0

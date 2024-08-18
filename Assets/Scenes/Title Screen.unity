@@ -496,6 +496,7 @@ GameObject:
   - component: {fileID: 721224750}
   - component: {fileID: 721224749}
   - component: {fileID: 721224748}
+  - component: {fileID: 721224751}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -605,6 +606,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 721224746}
   m_CullTransparentMesh: 1
+--- !u!114 &721224751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721224746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1413de760d14994aa83e0ecad75c819, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &804227252
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,6 +630,7 @@ GameObject:
   - component: {fileID: 804227255}
   - component: {fileID: 804227254}
   - component: {fileID: 804227253}
+  - component: {fileID: 804227257}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -709,6 +723,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &804227257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804227252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bb1380376bab2a4dad3be9bf37b853e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mySceneName: 
 --- !u!1 &936034823
 GameObject:
   m_ObjectHideFlags: 0
@@ -993,7 +1020,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1786473895}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 804227257}
+        m_TargetAssemblyTypeName: LevelSelector, Assembly-CSharp
+        m_MethodName: Startlevel
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Level Select
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1786473895
 MonoBehaviour:
   m_ObjectHideFlags: 0

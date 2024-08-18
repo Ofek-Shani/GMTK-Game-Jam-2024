@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     Ammo currentAmmoType = 0;
     public bool canLaunchersFire { private set; get; } = true;
 
+    public string nextLevel;
 
     private void Awake()
     {
@@ -82,7 +83,7 @@ public class GameManager : MonoBehaviour
                 if (ammoRemaining[numberInput] > 0) SwitchAmmo((Ammo)numberInput);
             }
         }
-        else if (Input.GetKeyDown(KeyCode.KeypadEnter)) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        else if (Input.GetKeyDown(KeyCode.Return)) SceneManager.LoadScene(nextLevel);
         // Restart Key Input handling
         if (Input.GetKeyDown(KeyCode.R))
         {

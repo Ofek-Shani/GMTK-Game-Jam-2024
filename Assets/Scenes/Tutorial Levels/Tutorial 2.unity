@@ -998,6 +998,10 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 7821915674376570022, guid: 90346812b002c024d8bd452563e61ed2, type: 3}
+      propertyPath: nextLevel
+      value: Tutorial 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821915674376570022, guid: 90346812b002c024d8bd452563e61ed2, type: 3}
       propertyPath: startingComets
       value: 1
       objectReference: {fileID: 0}
