@@ -135,7 +135,7 @@ public class SpaceObjectLauncher : MonoBehaviour
         manager.RemoveSpacePhysicsObject(previewInstance.GetComponent<SpacePhysics>());
         Destroy(previewInstance);
         toLaunchInstance.GetComponent<SpacePhysics>().Unpause();
-        toLaunchInstance.GetComponent<Rigidbody2D>().velocity = launchVector * launchSpeed;
+        toLaunchInstance.GetComponent<Rigidbody2D>().velocity = launchVector.normalized * launchSpeed;
         toLaunchInstance.GetComponent<CircleCollider2D>().enabled = true;
         toLaunchInstance = null;
         aiming = false;
