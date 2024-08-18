@@ -8,12 +8,15 @@ public class GameManager : MonoBehaviour
 {
     List<SpaceObjectLauncher> launchers = new();
 
-    const float SPACE_DUST_SPEED_MULTIPLIER = 0.1f;
+    const float SPACE_DUST_SPEED_MULTIPLIER = 0.5f;
     ParticleSystem particleSystem;
 
-    enum Ammo { Comet, Asteroid };
-    public int startingAsteroids, startingComets;
-    int[] ammoRemaining;
+    HotbarController hotbar;
+
+    enum Ammo { Comet, Asteroid, Piercer, Pusher, Blaster};
+    public int startingAsteroids, startingComets, startingPiercers, startingPushers, startingBlasters;
+    public int[] ammoRemaining { get; private set; }
+    public int[] maxAmmo { get; private set; }
     [SerializeField] List<GameObject> ammoPrefabs;
     Ammo currentAmmoType = 0;
     public bool canLaunchersFire { private set; get; } = true;
@@ -21,15 +24,17 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        ammoRemaining = new int[] { startingComets, startingAsteroids };
+        ammoRemaining = new int[] { startingComets, startingAsteroids , startingPiercers, startingPushers, startingBlasters};
+        maxAmmo = new int[] { startingComets, startingAsteroids, startingPiercers, startingPushers, startingBlasters };
         particleSystem = GetComponent<ParticleSystem>();
+        hotbar = GameObject.FindGameObjectWithTag("Hotbar").GetComponent<HotbarController>();
     }   
 
     private void Start()
     {
         var launcherObjects = GameObject.FindGameObjectsWithTag("Launcher");
         foreach (var launcherObject in launcherObjects) launchers.Add(launcherObject.GetComponent<SpaceObjectLauncher>());
-        SwitchAmmo(Ammo.Comet);
+        SwitchAmmo((int)Ammo.Comet);
 
     }
 
@@ -41,6 +46,11 @@ public class GameManager : MonoBehaviour
         particleSystem.SetParticles(particles, particleSystem.particleCount);
     }
 
+    /// <summary>
+    /// Get net particle velocity due to all physics objects
+    /// </summary>
+    /// <param name="particlePos"></param>
+    /// <returns></returns>
     Vector2 GetNetParticleVelocity(Vector2 particlePos)
     {
         Vector2 toReturn = Vector2.zero;
@@ -69,10 +79,18 @@ public class GameManager : MonoBehaviour
 
     // PHYSICS CONTROL
     public List<SpacePhysics> spacePhysicsInScene { get; private set; } = new();
+    /// <summary>
+    /// adds SpacePhysics to the GM list
+    /// </summary>
+    /// <param name="toAdd"></param>
     public void AddSpacePhysicsObject(SpacePhysics toAdd)
     {
         spacePhysicsInScene.Add(toAdd);
     }
+    /// <summary>
+    /// removes SpacePhysics from GM list
+    /// </summary>
+    /// <param name="toRemove"></param>
     public void RemoveSpacePhysicsObject(SpacePhysics toRemove)
     {
         spacePhysicsInScene.Remove(toRemove);
@@ -80,6 +98,10 @@ public class GameManager : MonoBehaviour
 
     // AMMO CONTROL
 
+    /// <summary>
+    /// gets number of currently pressed number key, and -1 if nothing is pressed.
+    /// </summary>
+    /// <returns></returns>
     int GetPressedNumber()
     {
         for (int number = 0; number <= 9; number++)
@@ -90,6 +112,11 @@ public class GameManager : MonoBehaviour
         return -1;
     }
 
+    /// <summary>
+    /// Switches the current ammo type to the given one
+    /// </summary>
+    /// <param name="newAmmo"></param>
+    /// <returns></returns>
     bool SwitchAmmo(Ammo newAmmo)
     {
         if (ammoRemaining[(int)newAmmo] <= 0 || (int)newAmmo > ammoRemaining.Length) return false;
@@ -100,6 +127,7 @@ public class GameManager : MonoBehaviour
         currentAmmoType = newAmmo;
         canLaunchersFire = true;
         Debug.Log("Ammo switched to " + newAmmo + "s (You have " + ammoRemaining[(int)newAmmo] + ").");
+        hotbar.ChangeSelection((int)newAmmo);
         return true;
     }
 
@@ -111,6 +139,7 @@ public class GameManager : MonoBehaviour
         ammoRemaining[(int)currentAmmoType] -= 1;
         canLaunchersFire = ammoRemaining[(int)currentAmmoType] > 0;
         Debug.Log("Projectile " + currentAmmoType + " fired. " + ammoRemaining[(int)currentAmmoType] + "  rounds left.");
+        hotbar.UpdateIcons();
     }
 
 
