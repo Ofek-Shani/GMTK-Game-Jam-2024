@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     HotbarController hotbar;
 
+    bool levelComplete = false;
+
     enum Ammo { Comet, Asteroid, Piercer, Pusher, Blaster};
     public int startingAsteroids, startingComets, startingPiercers, startingPushers, startingBlasters;
     public int[] ammoRemaining { get; private set; }
@@ -46,6 +48,14 @@ public class GameManager : MonoBehaviour
         particleSystem.SetParticles(particles, particleSystem.particleCount);
     }
 
+    public IEnumerator Victory()
+    {
+        canLaunchersFire = false;
+        levelComplete = true;
+        yield return new WaitForSecondsRealtime(0.75f);
+        GameObject.FindGameObjectWithTag("WinPanel").GetComponent<RectTransform>().anchoredPosition = Vector3.zero;
+    }
+
     /// <summary>
     /// Get net particle velocity due to all physics objects
     /// </summary>
@@ -61,14 +71,18 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        // Number Key Input handling
-        int numberInput = GetPressedNumber();
-        if(numberInput != -1)
-        {
-            Debug.Log(numberInput + " Pressed.");
-            if (ammoRemaining[numberInput] > 0) SwitchAmmo((Ammo)numberInput);
-        }
 
+        if (!levelComplete)
+        {
+            // Number Key Input handling
+            int numberInput = GetPressedNumber();
+            if (numberInput != -1)
+            {
+                Debug.Log(numberInput + " Pressed.");
+                if (ammoRemaining[numberInput] > 0) SwitchAmmo((Ammo)numberInput);
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.KeypadEnter)) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         // Restart Key Input handling
         if (Input.GetKeyDown(KeyCode.R))
         {

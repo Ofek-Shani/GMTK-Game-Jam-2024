@@ -10,19 +10,7 @@ public class ResourceCloudObject : MonoBehaviour
     public ResourceTypeEnum.ResourceType resource;
     GameManager gm;
     // Start is called before the first frame update
-    void Start()
-    {
-        GetComponent<ParticleSystem>().Pause();
-        gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        gm.AddSpacePhysicsObject(GetComponent<SpacePhysics>());
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
@@ -30,7 +18,7 @@ public class ResourceCloudObject : MonoBehaviour
         {
             // update resource counter
             collider.gameObject.GetComponent<CometObject>().Collect(resource);
-            
+
             gm.RemoveSpacePhysicsObject(GetComponent<SpacePhysics>());
         }
     }

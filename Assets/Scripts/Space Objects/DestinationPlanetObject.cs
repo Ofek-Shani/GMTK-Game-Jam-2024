@@ -1,13 +1,14 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class DestinationPlanetObject : PlanetObject
+public class DestinationPlanetObject : MonoBehaviour
 {
     public int[] resourcesNeeded;
-
-    public override void OnTriggerEnter2D(Collider2D collider)
+    bool winning = false;
+    public void OnTriggerEnter2D(Collider2D collider)
     {
         // if it's a big rock, womp womp.
         if(collider.GetComponent<AsteroidObject>())
@@ -19,6 +20,7 @@ public class DestinationPlanetObject : PlanetObject
             Debug.Log("Attempting to deliver resources from comet to target planet...");
             if(IsEnoughResources(collider.GetComponent<CometObject>().resources))
             {
+                Victory();
                 Debug.Log("Resources supplied -- LEVEL WON!!!");
             }
             else
@@ -33,5 +35,12 @@ public class DestinationPlanetObject : PlanetObject
         if (cometResources.Length != resourcesNeeded.Length) Debug.LogWarning("DestinationPlanet and Comet resource lists are of varying lengths!");
         for (int i = 0; i < cometResources.Length; i++) if (cometResources[i] < resourcesNeeded[i]) return false;
         return true;
+    }
+
+    void Victory()
+    {
+        GetComponent<Rotator>().enabled = false;
+        GetComponent<Animator>().Play("Win");
+        StartCoroutine(GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().Victory());
     }
 }
