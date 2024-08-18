@@ -57,7 +57,7 @@ public class PlanetObject : MonoBehaviour
 
     }
 
-    IEnumerator Explode()
+    protected IEnumerator Explode()
     {
         GetComponent<CircleCollider2D>().enabled = false;
         GetComponent<SpriteRenderer>().enabled = false;
