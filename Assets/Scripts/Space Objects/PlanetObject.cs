@@ -35,12 +35,41 @@ public class PlanetObject : MonoBehaviour
         //Console.Write(collider);
         if (collider.gameObject.GetComponent<AsteroidObject>() != null)
         {
-            gm.RemoveSpacePhysicsObject(GetComponent<SpacePhysics>());
-            gm.RemoveSpacePhysicsObject(collider.GetComponent<SpacePhysics>());
+
+            //note: this might be inefficient coding, but it is readable
+            if (collider.gameObject.GetComponent<AsteroidObject>().isPiercer)
+            {
+                gm.RemoveSpacePhysicsObject(GetComponent<SpacePhysics>());
+                gm.RemoveSpacePhysicsObject(collider.GetComponent<SpacePhysics>());
+                Destroy(gameObject);
+                //Destroy(collider.gameObject); //dont destroy it for a piercer
+                collider.gameObject.GetComponent<AsteroidObject>().isPiercer = false; //instead disable the piercer ability
+                Instantiate(resourceCloud, transform.position, transform.rotation);
+            }
+            else if (collider.gameObject.GetComponent<AsteroidObject>().isPusher)
+            {
+                GetComponent<Rigidbody2D>().velocity = collider.gameObject.GetComponent<Rigidbody2D>().velocity / 20;
+                Destroy(collider.gameObject);
+            }
+            else if (collider.gameObject.GetComponent<AsteroidObject>().isDirectionalBlast)
+            {
+                gm.RemoveSpacePhysicsObject(GetComponent<SpacePhysics>());
+                gm.RemoveSpacePhysicsObject(collider.GetComponent<SpacePhysics>());
+                Destroy(gameObject);
+                Vector2 vel = collider.gameObject.GetComponent<Rigidbody2D>().velocity;
+                Destroy(collider.gameObject);
+                var cloud = Instantiate(resourceCloud, transform.position, transform.rotation);
+                cloud.GetComponent<Rigidbody2D>().velocity = vel / 20;
+            }
+            else
+            {
+                gm.RemoveSpacePhysicsObject(GetComponent<SpacePhysics>());
+                gm.RemoveSpacePhysicsObject(collider.GetComponent<SpacePhysics>());
+                Destroy(gameObject);
+                Destroy(collider.gameObject);
+                Instantiate(resourceCloud, transform.position, transform.rotation);
+            }
             
-            Destroy(collider.gameObject);
-            Instantiate(resourceCloud, transform.position, transform.rotation);
-            StartCoroutine(Explode());
         }
 
         if(collider.gameObject.GetComponent<CometObject>())

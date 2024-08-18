@@ -18,7 +18,7 @@ public class SpacePhysics : MonoBehaviour
     public float maxGravityDistance = 5f;
     public bool emitsGravity;
     public bool canMove;
-    [Range(0.0f, 10.0f)]
+    [Range(0.0f, 1000.0f)]
     public float mass;
     public Vector2 initialVelocity;
     // Internal Components
