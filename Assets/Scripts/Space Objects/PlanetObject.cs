@@ -48,18 +48,19 @@ public class PlanetObject : MonoBehaviour
             }
             else if (collider.gameObject.GetComponent<AsteroidObject>().isPusher)
             {
-                GetComponent<Rigidbody2D>().velocity = collider.gameObject.GetComponent<Rigidbody2D>().velocity / 20;
+                GetComponent<Rigidbody2D>().velocity = collider.gameObject.GetComponent<Rigidbody2D>().velocity / 2;
                 Destroy(collider.gameObject);
             }
             else if (collider.gameObject.GetComponent<AsteroidObject>().isDirectionalBlast)
             {
+                Debug.Log("hit with blaster");
                 gm.RemoveSpacePhysicsObject(GetComponent<SpacePhysics>());
                 gm.RemoveSpacePhysicsObject(collider.GetComponent<SpacePhysics>());
                 StartCoroutine(Explode());
                 Vector2 vel = collider.gameObject.GetComponent<Rigidbody2D>().velocity;
                 Destroy(collider.gameObject);
                 var cloud = Instantiate(resourceCloud, transform.position, transform.rotation);
-                cloud.GetComponent<Rigidbody2D>().velocity = vel / 20;
+                cloud.GetComponent<Rigidbody2D>().velocity = vel / 2;
             }
             else
             {

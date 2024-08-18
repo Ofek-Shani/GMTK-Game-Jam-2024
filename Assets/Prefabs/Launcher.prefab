@@ -51,7 +51,7 @@ MonoBehaviour:
   previewLifetime: 1
   objectToLaunch: {fileID: 3241895408231308894, guid: 6479278df18568a47a3a48a81ed1c054, type: 3}
   trajectoryPreviewObject: {fileID: 0}
-  launchSpeed: 10
+  launchSpeed: 2
 --- !u!120 &6568938534455532211
 LineRenderer:
   serializedVersion: 2
