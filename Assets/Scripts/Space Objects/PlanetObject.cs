@@ -10,12 +10,14 @@ public class PlanetObject : MonoBehaviour
     public ResourceCloudObject resourceCloud;
     public UInt64 population;
 
+    const float TIME_FROM_EXPLODE_TO_DESTROY = 1f;
 
     GameManager gm;
 
     // Start is called before the first frame update
     void Start()
     {
+        GetComponent<ParticleSystem>().Pause();
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         gm.AddSpacePhysicsObject(GetComponent<SpacePhysics>());
     }
@@ -82,6 +84,15 @@ public class PlanetObject : MonoBehaviour
             // did I say destroy collider here or not?
         }
 
+    }
+
+    protected IEnumerator Explode()
+    {
+        GetComponent<CircleCollider2D>().enabled = false;
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<ParticleSystem>().Play();
+        yield return new WaitForSecondsRealtime(TIME_FROM_EXPLODE_TO_DESTROY);
+        Destroy(gameObject);
     }
 
     //Debug Function

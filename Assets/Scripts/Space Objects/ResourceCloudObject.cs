@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ResourceCloudObject : MonoBehaviour
 {
+    const float TIME_FROM_EXPLODE_TO_DESTROY = 1;
+
     public ResourceTypeEnum.ResourceType resource;
     GameManager gm;
     // Start is called before the first frame update
     void Start()
     {
+        GetComponent<ParticleSystem>().Pause();
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         gm.AddSpacePhysicsObject(GetComponent<SpacePhysics>());
 
@@ -26,8 +30,17 @@ public class ResourceCloudObject : MonoBehaviour
         {
             // update resource counter
             collider.gameObject.GetComponent<CometObject>().Collect(resource);
-            Destroy(gameObject);
+            
             gm.RemoveSpacePhysicsObject(GetComponent<SpacePhysics>());
         }
+    }
+
+    public IEnumerator Explode()
+    {
+        GetComponent<CircleCollider2D>().enabled = false;
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<ParticleSystem>().Play();
+        yield return new WaitForSecondsRealtime(TIME_FROM_EXPLODE_TO_DESTROY);
+        Destroy(gameObject);
     }
 }

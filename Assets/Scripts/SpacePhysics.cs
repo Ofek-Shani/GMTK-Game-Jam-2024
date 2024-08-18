@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Transactions;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class SpacePhysics : MonoBehaviour
 {
@@ -87,7 +88,7 @@ public class SpacePhysics : MonoBehaviour
         // get all the values for the formula
         float r = (transform.position - (Vector3)targetPos).magnitude;
         // if the object is too far away, do nothing.
-        if(r > maxGravityDistance) return Vector2.zero;
+        if(r > maxGravityDistance || r < GetComponent<CircleCollider2D>().radius) return Vector2.zero;
 
         Vector2 rHat = (transform.position - (Vector3)targetPos).normalized;
         float m1 = this.mass;
@@ -106,7 +107,10 @@ public class SpacePhysics : MonoBehaviour
     /// <returns></returns>
     public Vector2 GetParticleVelocity(Vector2 pos)
     {
+        if (!emitsGravity) return Vector2.zero;
         Vector2 disp = (Vector2)transform.position - pos;
+        if (disp.magnitude > maxGravityDistance || disp.magnitude < GetComponent<CircleCollider2D>().radius) return Vector2.zero;
+        
         return disp.normalized * (UNIVERSAL_GRAVITY_CONSTANT * this.mass / Mathf.Pow(disp.magnitude, 2));
     }
 
