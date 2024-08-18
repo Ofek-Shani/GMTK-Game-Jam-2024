@@ -75,8 +75,7 @@ public class PlanetObject : MonoBehaviour
 
         if(collider.gameObject.GetComponent<CometObject>())
         {
-            gm.RemoveSpacePhysicsObject(collider.GetComponent<SpacePhysics>());
-            Destroy(collider.gameObject);
+            collider.gameObject.GetComponent<CometObject>().LockAndDelete();
         }
 
         if (collider.gameObject.GetComponent<PreviewAsteroidObject>())

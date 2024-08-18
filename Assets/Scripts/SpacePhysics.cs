@@ -55,7 +55,6 @@ public class SpacePhysics : MonoBehaviour
         {
             gm.RemoveSpacePhysicsObject(this);
             Destroy(gameObject);
-            
         }
 
     }

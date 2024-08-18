@@ -18,4 +18,12 @@ public class CometObject : MonoBehaviour
     {
         resources[(int)toCollect]++;
     }
+
+    public void LockAndDelete()
+    {
+        gm.RemoveSpacePhysicsObject(GetComponent<SpacePhysics>());
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<CircleCollider2D>().enabled = true;
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+    }
 }
