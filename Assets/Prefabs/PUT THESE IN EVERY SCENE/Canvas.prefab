@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 111450574186480037}
   m_Layer: 5
   m_Name: WinPanel
-  m_TagString: Untagged
+  m_TagString: WinPanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,7 +38,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 9999}
   m_SizeDelta: {x: 500, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1059504967958877895
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 8287891945374684893}
   m_Layer: 5
   m_Name: FlavorText
-  m_TagString: Untagged
+  m_TagString: FlavorText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
