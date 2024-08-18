@@ -8,6 +8,8 @@ TagManager:
   - GameManager
   - Launcher
   - Hotbar
+  - WinPanel
+  - FlavorText
   layers:
   - Default
   - TransparentFX

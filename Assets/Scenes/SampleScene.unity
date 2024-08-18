@@ -600,6 +600,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2909067742366217362, guid: 90df6e6e64696284398253edd58b1368, type: 3}
+      propertyPath: m_TagString
+      value: WinPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4836727001418756093, guid: 90df6e6e64696284398253edd58b1368, type: 3}
+      propertyPath: m_TagString
+      value: FlavorText
+      objectReference: {fileID: 0}
     - target: {fileID: 7595846561563091348, guid: 90df6e6e64696284398253edd58b1368, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -679,6 +687,10 @@ PrefabInstance:
     - target: {fileID: 7595846561563091348, guid: 90df6e6e64696284398253edd58b1368, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7996533120165110482, guid: 90df6e6e64696284398253edd58b1368, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 9999
       objectReference: {fileID: 0}
     - target: {fileID: 8550365142070681901, guid: 90df6e6e64696284398253edd58b1368, type: 3}
       propertyPath: m_Name

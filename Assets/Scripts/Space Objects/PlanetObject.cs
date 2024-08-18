@@ -66,9 +66,9 @@ public class PlanetObject : MonoBehaviour
             {
                 gm.RemoveSpacePhysicsObject(GetComponent<SpacePhysics>());
                 gm.RemoveSpacePhysicsObject(collider.GetComponent<SpacePhysics>());
+                Instantiate(resourceCloud, transform.position, transform.rotation);
                 StartCoroutine(Explode());
                 Destroy(collider.gameObject);
-                Instantiate(resourceCloud, transform.position, transform.rotation);
             }
             
         }
@@ -89,14 +89,16 @@ public class PlanetObject : MonoBehaviour
 
     protected IEnumerator Explode()
     {
-        Debug.Log("Waiting to Destroy");
         GetComponent<CircleCollider2D>().enabled = false;
         GetComponent<SpriteRenderer>().enabled = false;
+        if (transform.childCount > 0)
+        {
+            Debug.Log("Disabling Child");
+            transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+        }
         GetComponent<ParticleSystem>().Play();
         yield return new WaitForSecondsRealtime(TIME_FROM_EXPLODE_TO_DESTROY);
-        Debug.Log("Destroying...");
         Destroy(gameObject);
-        Debug.Log("Destroyed.");
     }
 
     //Debug Function

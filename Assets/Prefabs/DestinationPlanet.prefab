@@ -5047,7 +5047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb811325334feb1478cfdf2a9c16f3a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceCloud: {fileID: 0}
+  resourceCloud: {fileID: -6399475267890026279, guid: 37d4508f40640fb4cb993b8056fd2f5c, type: 3}
   population: 0
 --- !u!4 &3931954476984167414 stripped
 Transform:
