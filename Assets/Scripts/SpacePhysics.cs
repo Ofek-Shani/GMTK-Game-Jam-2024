@@ -10,6 +10,8 @@ public class SpacePhysics : MonoBehaviour
     // GLOBAL PHYSICS CONSTANTS
     const float UNIVERSAL_GRAVITY_CONSTANT = 1f;
 
+    const float MAX_SIM_X = 15, MAX_SIM_Y = 10;
+
     // PER OBJECT CONFIGS
 
     bool isPaused = false;
@@ -47,6 +49,12 @@ public class SpacePhysics : MonoBehaviour
         {
             //if (GetComponent<ResourceCloudObject>()) Debug.Log(" ASFD "  + otherBodies.ToString());
             rb.AddForce(GetNetForceVector(transform.position), ForceMode2D.Force);
+        }
+
+        if (Mathf.Abs(transform.position.x) > MAX_SIM_X || Mathf.Abs(transform.position.y) > MAX_SIM_Y) 
+        {
+            gm.RemoveSpacePhysicsObject(this);
+            Destroy(gameObject);
         }
 
     }

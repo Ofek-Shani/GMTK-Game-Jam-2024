@@ -6,8 +6,15 @@ using UnityEngine;
 
 public class DestinationPlanetObject : MonoBehaviour
 {
-    public int[] resourcesNeeded;
+    public int resourcesNeeded;
     bool winning = false;
+
+    GameManager gm;
+    private void Start()
+    {
+        gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+    }
+
     public void OnTriggerEnter2D(Collider2D collider)
     {
         // if it's a big rock, womp womp.
@@ -30,11 +37,9 @@ public class DestinationPlanetObject : MonoBehaviour
         }
     }
 
-    bool IsEnoughResources(int[] cometResources)
+    bool IsEnoughResources(int cometResources)
     {
-        if (cometResources.Length != resourcesNeeded.Length) Debug.LogWarning("DestinationPlanet and Comet resource lists are of varying lengths!");
-        for (int i = 0; i < cometResources.Length; i++) if (cometResources[i] < resourcesNeeded[i]) return false;
-        return true;
+        return cometResources >= gm.resourcesNeeded;
     }
 
     void Victory()

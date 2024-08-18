@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9bd8c4dfc937694a878694a3ba4e5d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resourcesNeeded: 1
   startingAsteroids: 3
   startingComets: 3
   startingPiercers: 0
@@ -53,7 +54,11 @@ MonoBehaviour:
   startingBlasters: 0
   ammoPrefabs:
   - {fileID: 2532951297218254512, guid: 49d0d9532f51d6e4eb596307e262c40e, type: 3}
-  - {fileID: 8175872077654749456, guid: 7d5601454cad2c244a273808328083a2, type: 3}
+  - {fileID: 4431555965835605978, guid: 218af98b167af7849b4da7a5f10a10eb, type: 3}
+  - {fileID: 1343907980583864364, guid: 62f1bb748b809664da1aca619a32afdf, type: 3}
+  - {fileID: 6451826867480382310, guid: 697999c9069250645a9be65b18ad5964, type: 3}
+  - {fileID: 5647174463087312145, guid: 7e3a5c90d582bd741929f0fbbeb1e222, type: 3}
+  currentComet: {fileID: 0}
 --- !u!198 &7615574994375386315
 ParticleSystem:
   m_ObjectHideFlags: 0

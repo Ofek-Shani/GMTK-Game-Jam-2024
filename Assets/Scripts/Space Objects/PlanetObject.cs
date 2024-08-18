@@ -75,8 +75,7 @@ public class PlanetObject : MonoBehaviour
 
         if(collider.gameObject.GetComponent<CometObject>())
         {
-            gm.RemoveSpacePhysicsObject(collider.GetComponent<SpacePhysics>());
-            Destroy(collider.gameObject);
+            collider.gameObject.GetComponent<CometObject>().LockAndDelete();
         }
 
         if (collider.gameObject.GetComponent<PreviewAsteroidObject>())
@@ -91,11 +90,12 @@ public class PlanetObject : MonoBehaviour
     {
         GetComponent<CircleCollider2D>().enabled = false;
         GetComponent<SpriteRenderer>().enabled = false;
-        if (transform.childCount > 0)
+        if (GetComponent<DestinationPlanetObject>())
         {
             Debug.Log("Disabling Child");
             transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
         }
+
         GetComponent<ParticleSystem>().Play();
         yield return new WaitForSecondsRealtime(TIME_FROM_EXPLODE_TO_DESTROY);
         Destroy(gameObject);

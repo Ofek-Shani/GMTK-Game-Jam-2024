@@ -26,6 +26,7 @@ public class StarObject : MonoBehaviour
     {
         gm.RemoveSpacePhysicsObject(collider.GetComponent<SpacePhysics>());
         if(collider.GetComponent<ResourceCloudObject>()) StartCoroutine(collider.GetComponent<ResourceCloudObject>().Explode());
+        else if (collider.GetComponent<CometObject>()) collider.GetComponent<CometObject>().LockAndDelete();
         else Destroy(collider.gameObject);
     }
 }

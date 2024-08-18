@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,16 +14,25 @@ public class GameManager : MonoBehaviour
     ParticleSystem particleSystem;
 
     HotbarController hotbar;
+    TMP_Text resourceText;
 
     bool levelComplete = false;
 
     enum Ammo { Comet, Asteroid, Piercer, Pusher, Blaster};
+    public int resourcesNeeded = 1;
     public int startingAsteroids, startingComets, startingPiercers, startingPushers, startingBlasters;
     public int[] ammoRemaining { get; private set; }
     public int[] maxAmmo { get; private set; }
     [SerializeField] List<GameObject> ammoPrefabs;
     Ammo currentAmmoType = 0;
     public bool canLaunchersFire { private set; get; } = true;
+
+    public CometObject currentComet;
+    public void SetComet(CometObject toSet)
+    {
+        if (currentComet) currentComet.LockAndDelete();
+        currentComet = toSet;
+    }
 
     public string nextLevel;
 
@@ -31,6 +42,7 @@ public class GameManager : MonoBehaviour
         maxAmmo = new int[] { startingComets, startingAsteroids, startingPiercers, startingPushers, startingBlasters };
         particleSystem = GetComponent<ParticleSystem>();
         hotbar = GameObject.FindGameObjectWithTag("Hotbar").GetComponent<HotbarController>();
+        resourceText = GameObject.FindGameObjectWithTag("ResourceTracker").GetComponentInChildren<TMP_Text>();
     }   
 
     private void Start()
@@ -47,6 +59,7 @@ public class GameManager : MonoBehaviour
         particleSystem.GetParticles(particles);
         for (int i = 0; i < particles.Length; i++) particles[i].velocity = GetNetParticleVelocity(particles[i].position);
         particleSystem.SetParticles(particles, particleSystem.particleCount);
+        resourceText.text = (currentComet ? currentComet.resources + "/" : 0 + "/") + resourcesNeeded;
     }
 
     public IEnumerator Victory()

@@ -289,6 +289,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3549842580888872132, guid: 90df6e6e64696284398253edd58b1368, type: 3}
+      propertyPath: m_Name
+      value: Label
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544917403824418884, guid: 90df6e6e64696284398253edd58b1368, type: 3}
+      propertyPath: m_Name
+      value: Resource Tracker Text
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544917403824418884, guid: 90df6e6e64696284398253edd58b1368, type: 3}
+      propertyPath: m_TagString
+      value: ResourceTracker
+      objectReference: {fileID: 0}
     - target: {fileID: 7595846561563091348, guid: 90df6e6e64696284398253edd58b1368, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -673,6 +685,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7821915674376570022, guid: 90346812b002c024d8bd452563e61ed2, type: 3}
+      propertyPath: resourcesNeeded
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -800,7 +816,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5351781883350872866, guid: 93ca8354ce082244a8fa927560c7d2d3, type: 3}
       propertyPath: launchSpeed
-      value: 150
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5351781883350872866, guid: 93ca8354ce082244a8fa927560c7d2d3, type: 3}
       propertyPath: LAUNCH_SPEED
