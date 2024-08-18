@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class AsteroidObject : MonoBehaviour
 {
+    public bool isPusher = false;
+    public bool isPiercer = false;
 
+    public bool isDirectionalBlast = false;
     Animator anim;
 
     GameManager gm;

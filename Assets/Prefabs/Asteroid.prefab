@@ -159,6 +159,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 702be3d0bc52c3448af77cb6bbccfb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPusher: 0
+  isPiercer: 0
+  isDirectionalBlast: 0
 --- !u!95 &-2628695876004793628
 Animator:
   serializedVersion: 5
