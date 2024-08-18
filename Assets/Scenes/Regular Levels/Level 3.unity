@@ -800,7 +800,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5351781883350872866, guid: 93ca8354ce082244a8fa927560c7d2d3, type: 3}
       propertyPath: launchSpeed
-      value: 150
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5351781883350872866, guid: 93ca8354ce082244a8fa927560c7d2d3, type: 3}
       propertyPath: LAUNCH_SPEED
