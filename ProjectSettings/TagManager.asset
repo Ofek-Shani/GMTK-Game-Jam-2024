@@ -10,6 +10,7 @@ TagManager:
   - Hotbar
   - WinPanel
   - FlavorText
+  - ResourceTracker
   layers:
   - Default
   - TransparentFX
